@@ -25,9 +25,19 @@ if st.button("Analyze", use_container_width=True) and text.strip():
     st.info(out["summary"])
 
     c1, c2, c3 = st.columns(3)
-    c1.metric("Emotional state", out["emotional_state"])
-    c2.metric("Cognitive load", out["stress_level"])
-    c3.metric("Decision conflict", out["conflict_level"])
+
+with c1:
+    st.caption("Emotional state")
+    st.markdown(f"<div class='big-pill'>{out['emotional_state']}</div>", unsafe_allow_html=True)
+
+with c2:
+    st.caption("Cognitive load")
+    st.markdown(f"<div class='big-pill'>{out['stress_level']}</div>", unsafe_allow_html=True)
+
+with c3:
+    st.caption("Decision conflict")
+    st.markdown(f"<div class='big-pill'>{out['conflict_level']}</div>", unsafe_allow_html=True)
+
 
     st.subheader("Reflection prompts")
     for p in out["prompts"]:
@@ -41,4 +51,5 @@ if st.button("Analyze", use_container_width=True) and text.strip():
         st.json(out["explain"])
 else:
     st.code("Example:\nI feel torn between pushing myself and resting. I'm scared I'll fall behind but I'm exhausted.")
+
 
