@@ -10,6 +10,40 @@ from src.predict import analyze
 
 
 st.set_page_config(page_title="Reflective AI", page_icon="🧠", layout="centered")
+st.markdown("""
+<style>
+/* overall spacing */
+.block-container { padding-top: 2rem; padding-bottom: 2rem; max-width: 900px; }
+
+/* title */
+h1 { font-size: 2.2rem !important; }
+
+/* pill cards for the 3 outputs */
+.big-pill {
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+/* summary box look cleaner */
+div[data-testid="stAlert"] {
+  border-radius: 14px;
+}
+
+/* buttons */
+.stButton > button {
+  border-radius: 14px;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+}
+</style>
+""", unsafe_allow_html=True)
+
 
 st.title("🧠 Reflective AI")
 st.caption("Non-clinical reflection & decision-support based on text signals.")
@@ -51,5 +85,6 @@ with c3:
         st.json(out["explain"])
 else:
     st.code("Example:\nI feel torn between pushing myself and resting. I'm scared I'll fall behind but I'm exhausted.")
+
 
 
